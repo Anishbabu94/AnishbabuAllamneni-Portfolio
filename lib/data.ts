@@ -76,6 +76,16 @@ export interface Certification {
   logoSrc: string;
 }
 
+export interface EducationEntry {
+  activities?: string;
+  dateRange: string;
+  degree: string;
+  href: string;
+  institution: string;
+  logoAlt: string;
+  logoSrc: string;
+}
+
 export interface SocialLink {
   label: string;
   href: string;
@@ -434,6 +444,26 @@ export const quickFacts: QuickFact[] = [
     label: "Email",
     value: "anishallamneni@gmail.com",
     icon: Mail,
+  },
+];
+
+export const educationEntries: EducationEntry[] = [
+  {
+    institution: "Lawrence Technological University",
+    degree: "Master of Science - MS, Computer Science",
+    dateRange: "Jan 2024 - Dec 2025",
+    href: "https://ltu.edu/",
+    logoAlt: "Lawrence Technological University seal",
+    logoSrc: "/education/lawrence-technological-university.jpg",
+  },
+  {
+    institution: "Jawaharlal Nehru Technological University, Kakinada",
+    degree: "Bachelor of Technology - BTech, Computer Science",
+    dateRange: "Jun 2018 - Jun 2022",
+    activities: "Computer Society Of India (CSI)",
+    href: "https://www.jntuk.edu.in/",
+    logoAlt: "Jawaharlal Nehru Technological University Kakinada logo",
+    logoSrc: "/education/jntuk.png",
   },
 ];
 

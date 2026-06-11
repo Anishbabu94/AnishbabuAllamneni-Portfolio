@@ -7,6 +7,7 @@ import { useRef } from "react";
 import {
   aboutCopy,
   certifications,
+  educationEntries,
   motionConfig,
   quickFacts,
 } from "@/lib/data";
@@ -177,10 +178,98 @@ export function About() {
 
       <motion.div
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+        aria-labelledby="education-heading"
+        className="relative mt-20 border-t border-border pt-9"
+        initial={{ opacity: 0, y: 28 }}
+        transition={{ duration: 0.5, ease: easeOutQuad, delay: 0.36 }}
+      >
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="technical-label text-accent">Academic Foundation</p>
+            <h3
+              className="mt-2 font-display text-3xl font-bold"
+              id="education-heading"
+            >
+              Education
+            </h3>
+          </div>
+          <p className="max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-right">
+            Computer science foundations spanning graduate study and
+            undergraduate engineering.
+          </p>
+        </div>
+
+        <div className="relative mt-8 grid gap-4 lg:grid-cols-2">
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute -inset-8 -z-10 bg-[radial-gradient(ellipse_at_center,color-mix(in_srgb,var(--accent)_6%,transparent),transparent_70%)] blur-3xl"
+          />
+          {educationEntries.map((entry, index) => (
+            <motion.a
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+              aria-label={`Open ${entry.institution} website`}
+              className="focus-ring group relative grid min-h-52 grid-cols-[5rem_1fr] gap-5 overflow-hidden rounded-lg border border-border bg-card/58 p-5 shadow-inset transition duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-elevated sm:grid-cols-[6rem_1fr_auto] sm:p-6"
+              href={entry.href}
+              initial={{ opacity: 0, y: 18 }}
+              key={entry.institution}
+              rel="noreferrer"
+              target="_blank"
+              transition={{
+                duration: 0.4,
+                ease: easeOutQuad,
+                delay: 0.42 + index * 0.08,
+              }}
+            >
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-gradient-to-r from-accent via-accent-secondary to-signal transition-transform duration-300 group-hover:scale-x-100"
+              />
+              <span className="grid size-20 place-items-center overflow-hidden rounded-lg border border-border bg-white p-2.5 shadow-soft transition-transform duration-300 group-hover:scale-[1.04] sm:size-24 sm:p-3">
+                <Image
+                  alt={entry.logoAlt}
+                  className="h-full w-full object-contain"
+                  height={96}
+                  src={entry.logoSrc}
+                  width={96}
+                />
+              </span>
+
+              <span className="min-w-0">
+                <span className="technical-label text-accent">
+                  {entry.dateRange}
+                </span>
+                <span className="mt-3 block font-display text-xl font-bold leading-tight transition-colors duration-300 group-hover:text-accent sm:text-2xl">
+                  {entry.institution}
+                </span>
+                <span className="mt-3 block text-sm font-semibold leading-relaxed text-foreground">
+                  {entry.degree}
+                </span>
+                {entry.activities ? (
+                  <span className="mt-4 block border-t border-border pt-3 text-xs leading-relaxed text-muted-foreground">
+                    <span className="font-semibold text-foreground">
+                      Activities and societies:
+                    </span>{" "}
+                    {entry.activities}
+                  </span>
+                ) : null}
+              </span>
+
+              <ArrowUpRight
+                aria-hidden="true"
+                className="absolute right-4 top-4 text-muted-foreground transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent sm:static"
+                size={17}
+              />
+            </motion.a>
+          ))}
+        </div>
+      </motion.div>
+
+      <motion.div
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
         aria-labelledby="certifications-heading"
         className="relative mt-20 border-t border-border pt-9"
         initial={{ opacity: 0, y: 28 }}
-        transition={{ duration: 0.5, ease: easeOutQuad, delay: 0.42 }}
+        transition={{ duration: 0.5, ease: easeOutQuad, delay: 0.5 }}
       >
         <div className="grid gap-4 sm:grid-cols-[0.8fr_1.2fr] sm:items-end">
           <div>

@@ -5,6 +5,7 @@ import { BrandMark } from "@/components/brand-mark";
 import { PrintResumeButton } from "@/components/print-resume-button";
 import {
   certifications,
+  educationEntries,
   experienceEntries,
   projects,
   siteConfig,
@@ -175,10 +176,24 @@ export default function ResumePage() {
             >
               Education
             </h2>
-            <p className="mt-4 font-bold">Master&apos;s in Computer Science</p>
-            <p className="mt-1 text-sm text-zinc-700">
-              Lawrence Technological University
-            </p>
+            <div className="mt-4 space-y-4">
+              {educationEntries.map((entry) => (
+                <article className="resume-entry" key={entry.institution}>
+                  <p className="font-bold">{entry.degree}</p>
+                  <p className="mt-1 text-sm text-zinc-700">
+                    {entry.institution}
+                  </p>
+                  <p className="mt-1 text-xs font-semibold text-zinc-600">
+                    {entry.dateRange}
+                  </p>
+                  {entry.activities ? (
+                    <p className="mt-1 text-xs leading-5 text-zinc-600">
+                      Activities and societies: {entry.activities}
+                    </p>
+                  ) : null}
+                </article>
+              ))}
+            </div>
           </section>
 
           <section aria-labelledby="resume-certifications">
